@@ -97,12 +97,6 @@ function getPasswordOptions() {
     let lowrCaseChar = prompt('Do you want to use LOWER CASE CHARACTERS in your password? (YES/NO)');
     let upperCaseChar = prompt('Do you want to use UPPER CASE CHARACTERS in your password? (YES/NO)');
     let numbers = prompt('Do you want to use NUMBERS in your password? (YES/NO)');
-    amountOfChar = Number(prompt('Please enter the amount of character you want to use in your password? (from 8 to 128)'));
-
-    if (amountOfChar < 8 || amountOfChar > 128) {
-      alert('Enter valid NUMBER');
-      getPasswordOptions();
-    } 
 
     if (specialChar === 'YES') {
       finalArrOfChar.push(...specialCharacters);
@@ -116,6 +110,18 @@ function getPasswordOptions() {
     if (numbers === 'YES') {
       finalArrOfChar.push(...numericCharacters);
     }
+
+    if (finalArrOfChar.length === 0) {
+      alert('You should select AT LEAST ONE group of characters!');
+      getPasswordOptions();
+    }
+
+    amountOfChar = Number(prompt('Please enter the amount of character you want to use in your password? (from 8 to 128)'));
+
+    if (amountOfChar < 8 || amountOfChar > 128) {
+      alert('Enter valid NUMBER');
+      amountOfChar = Number(prompt('Please enter the amount of character you want to use in your password? (from 8 to 128)'));
+    } 
 }
 
 // Function for getting a random element from an array
