@@ -99,7 +99,7 @@ function getPasswordOptions() {
     let numbers = prompt('Do you want to use NUMBERS in your password? (YES/NO)');
     amountOfChar = Number(prompt('Please enter the amount of character you want to use in your password? (from 8 to 128)'));
 
-    if (amountOfChar > 8 && amountOfChar < 128) {
+    if (amountOfChar >= 8 && amountOfChar <= 128) {
       true;
     } else {
       alert('Enter valid NUMBER');
