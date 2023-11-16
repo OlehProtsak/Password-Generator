@@ -88,7 +88,7 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-let finalArrOfChar = [];
+let finalArrOfChar = [ ];
 let amountOfChar = 0;
 
 // Function to prompt user for password options
@@ -116,15 +116,18 @@ function getPasswordOptions() {
 // Function for getting a random element from an array
 function getRandom(arr) {
   let password = [];
-    for (let i = 0; i < arr.length; i++) {
-      password.push(arr[i]);
+
+    for (let i = 0; i < amountOfChar; i++) {
+      let randomNumber = Math.floor(Math.random() * finalArrOfChar.length);
+      password.push(arr[randomNumber]);
     }
+
     return password.join('');
 }
 
 // Function to generate password with user input
 function generatePassword() {
-    return getRandom([1,2,3,4,5,6,7]);
+    return getRandom(finalArrOfChar);
 }
 
 // Get references to the #generate element
@@ -142,4 +145,5 @@ function writePassword() {
 generateBtn.addEventListener('click', writePassword);
 
 getPasswordOptions();
-console.log(amountOfChar, finalArrOfChar);
+// console.log(amountOfChar, finalArrOfChar);
+
