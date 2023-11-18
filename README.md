@@ -15,6 +15,8 @@ The Password Generator is a simple and secure tool that allows users to generate
 2. Open index.html in your browser.
 3. Customize Your Password.
 
+#### Alternatively, utilize my application deployed on GitHub Pages https://olehprotsak.github.io/Password-Generator/
+
 ## Usage
 
 1. Click 'Generate Password' button.
