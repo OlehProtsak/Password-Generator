@@ -88,13 +88,23 @@ var upperCasedCharacters = [
   'Z'
 ];
 // This empty array for collecting all selected types of Characters by User
-let finalArrOfChar = [ ];
+let finalArrOfChar = [];
 // For selected amount of characters
 let amountOfChar = 0;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  // All prompt assigned to variables
+    // Ask user how many characters should be in password (Use Number function to conver string to number)
+    amountOfChar = Number(prompt('Please enter the amount of character you want to use in your password? (from 8 to 128)'));
+
+    // Check if user selected valid number of characters and not letters
+    if (amountOfChar < 8 || amountOfChar > 128 || isNaN(amountOfChar)) {
+      alert('Enter valid NUMBER');
+      amountOfChar = 0;
+      return false;
+    } 
+
+    // All prompt assigned to variables
     let specialChar = prompt('Do you want to use SPECIAL CHARACTERS in your password? (YES/NO)');
     let lowrCaseChar = prompt('Do you want to use LOWER CASE CHARACTERS in your password? (YES/NO)');
     let upperCaseChar = prompt('Do you want to use UPPER CASE CHARACTERS in your password? (YES/NO)');
@@ -113,20 +123,13 @@ function getPasswordOptions() {
     if (numbers === 'YES') {
       finalArrOfChar.push(...numericCharacters);
     }
-
+    
     // Check if user selected at least one group oh characters 
     if (finalArrOfChar.length === 0) {
       alert('You should select AT LEAST ONE group of characters!');
-      getPasswordOptions();
+      amountOfChar = 0;
+      return false;
     }
-    // Ask user how many characters should be in password (Use Number function to conver string to number)
-    amountOfChar = Number(prompt('Please enter the amount of character you want to use in your password? (from 8 to 128)'));
-
-    // Check if user selected valid number of characters 
-    if (amountOfChar < 8 || amountOfChar > 128) {
-      alert('Enter valid NUMBER');
-      amountOfChar = Number(prompt('Please enter the amount of character you want to use in your password? (from 8 to 128)'));
-    } 
 }
 
 // Function for getting a random element from an array
@@ -148,18 +151,18 @@ function getRandom(arr) {
 function generatePassword() {
     // after click invoke functions with poromts
     getPasswordOptions();
-    
     // return result of function getRandom passing finalArrChar array as an argument
     return getRandom(finalArrOfChar);
 }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+const generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+  let password = generatePassword();
+  let passwordText = document.querySelector('#password');
+  finalArrOfChar = [];
 
   passwordText.value = password;
 }
